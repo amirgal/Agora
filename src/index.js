@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import inventory from './stores/Inventory'
+import Inventory from './stores/Inventory'
+import { Provider } from 'mobx-react';
 
-ReactDOM.render(<App store={inventory}/>, document.getElementById('root'));
+const inventory = new Inventory()
+const store = {inventory}
+
+ReactDOM.render(<Provider {...store}><App /></Provider>, document.getElementById('root'));
 
 serviceWorker.unregister();
