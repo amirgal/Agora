@@ -9,7 +9,7 @@ class App extends Component{
   render() {
     return (
       <div>
-        <Market store={this.props.inventory}/>
+        <Market store={this.props.store}/>
       </div>
     );
   }
