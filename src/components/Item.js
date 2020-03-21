@@ -10,7 +10,10 @@ class Item extends Component {
     }
 
     changePrice = () => {
-        const newPrice = prompt('enter new price')
+        let newPrice
+        do{
+            newPrice = parseInt(prompt('Enter new price'))
+        }while(isNaN(newPrice) || newPrice < 0)
         this.props.inventory.changePrice(this.props.item.name,newPrice)
     }
 
@@ -18,7 +21,7 @@ class Item extends Component {
         const item = this.props.item
         return (
             <li>
-                <p onDoubleClick={this.changePrice}>{item.quantity} {item.name} available at ${item.price} per item</p>
+                <span onDoubleClick={this.changePrice}>{item.quantity} {item.name} available at ${item.price} per item   </span>
                 <button onClick={this.buyItem}>Buy</button>
             </li>
         )
